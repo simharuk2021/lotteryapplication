@@ -1,0 +1,31 @@
+version: "3.8"
+services: 
+  nginx: 
+    container_name: nginx_1
+    image: nginx:latest
+    ports: 
+    - target: 80
+      published: 80
+      protocol: tcp
+    volumes: 
+    - type: bind 
+      source: ./nginx.conf
+      target: /etc/nginx/nginx.conf
+    depends_on: 
+    - front-end 
+
+  front-end: 
+    container_name: front_end_api
+    build: ./front_end_api
+    depends_on: 
+    - numbers_api
+    - day_api 
+
+  numbers_api: 
+    container_name: numbers_api
+    build: ./numbers_api
+
+  day_api:
+    container_name: day_api 
+    build: ./day_api 
+    
