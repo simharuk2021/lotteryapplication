@@ -1,7 +1,7 @@
 version: "3.8"
 services: 
   nginx: 
-    container_name: nginx_1
+    container_name: nginx
     image: nginx:latest
     ports: 
     - target: 80
@@ -20,6 +20,7 @@ services:
     depends_on: 
     - numbers_api
     - day_api 
+    - rollover_api
 
   numbers_api: 
     container_name: numbers_api
@@ -28,4 +29,11 @@ services:
   day_api:
     container_name: day_api 
     build: ./day_api 
+  
+  rollover_api:
+    container_name: rollover_api
+    build: ./rollover_api
+    depends_on:
+    - numbers_api
+    - day_api
     
