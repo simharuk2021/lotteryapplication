@@ -2,15 +2,16 @@ from application import app
 from flask import Flask, request, Response, jsonify 
 import random
 
+jackpot = {
+    0: "Rollover",
+    1: "No Rollover",
+    }
+
 @app.route('/get_message', methods=['POST'])
 def rollover():
 
-    jackpot = {
-        0: "Rollover",
-        1: "No Rollover",
-    }
+    result = request.json['result']
 
-    numbers = request.json['numbers_api']
     sum = 0
     for number in numbers:
         sum += number
