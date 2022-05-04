@@ -1,5 +1,5 @@
 from application import app 
-from flask import Flask, request, Response 
+from flask import Flask, request, Response, jsonify
 import random
 
 @app.route('/get_numbers',methods=['GET'])
@@ -15,4 +15,4 @@ def lotto():
         numbers.append(number)
     numbers.sort()
 
-    return Response(f"{numbers}", mimetype="text/plain")
+    return jsonify(f"{numbers}")

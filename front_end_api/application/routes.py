@@ -9,7 +9,8 @@ def home():
     day_api = requests.get('http://day_api:5000/get_days')
 
     result = {'numbers_api': numbers_api} 
-    message = requests.post('http://rollover:5000/get_message', json = {'result': numbers_api})
+    message = requests.post('http://rollover:5000/get_message', json = {'result':[numbers_api]})
     
 
-    return Response(f"{numbers_api.text} {day_api.text} {message.text}", mimetype="text/plain")
+    # return jsonify(f"{numbers_api} {day_api} {message}")
+    return jsonify("{numbers_api} {message}")

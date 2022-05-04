@@ -10,11 +10,11 @@ jackpot = {
 @app.route('/get_message', methods=['POST'])
 def rollover():
 
-    result = request.json['result']
+    result = request.json['numbers']
 
     sum = 0
-    for number in numbers:
-        sum += number
+    for result in results:
+        sum += result
     if sum < 150:
         return jsonify(f"{jackpot[0]}")
     else:
