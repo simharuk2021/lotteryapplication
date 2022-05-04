@@ -11,11 +11,15 @@ jackpot = {
 def rollover():
 
     results = eval(request.get_json()['numbers_api'])
+    days = request.get_json()['day_api']
     
     sum = 0
     for result in results:
         sum += result
-    if sum < 150:
-        return Response(f"{jackpot[0]}", mimetype = 'text/plain')
+    if sum < 150: 
+        if days == "Saturday":
+            return Response(f"{jackpot[0]}", mimetype = 'text/plain')
+        else: 
+            return Response(f"{jackpot[1]}", mimetype = 'text/plain')
     else:
         return Response(f"{jackpot[1]}", mimetype = 'text/plain')
