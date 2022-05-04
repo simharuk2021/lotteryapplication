@@ -15,4 +15,4 @@ def lotto():
         numbers.append(number)
     numbers.sort()
 
-    return jsonify(f"{numbers}")
+    return Response(f"{numbers}", mimetype = 'text/plain')
