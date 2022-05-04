@@ -1,5 +1,5 @@
 FROM python:3.8 
-WORKDIR /character_api 
+WORKDIR /numbers_api 
 COPY . . 
 RUN pip install -r requirements.txt
 EXPOSE 5000 
