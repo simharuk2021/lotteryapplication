@@ -1,9 +1,13 @@
 {% block title %}
-<title>Lottery Application</title>
+<title>Lucky Generator</title>
 {% endblock %}
 
 {% block content %}
-<h2> Current game</h2>
-    {{ day_api}} {{numbers_api}} {{ message}}  <a onClick="window.location.reload()"><button type="button">spin again</button></a>
+<h2> Lucky Suggestion</h2>
+<p>You should buy a ticket on: {{ day_api}}</p> 
+<p>With these numbers: {{numbers_api}}</p> 
+<p>This week is: {{ message}}</p>
+<p><a onClick="window.location.reload()">
+<button type="button">Generate Luck</button></a></p>
 
 {% endblock %}
