@@ -1,0 +1,9 @@
+{% block title %}
+<title>Lottery Application</title>
+{% endblock %}
+
+{% block content %}
+<h2> Current game</h2>
+    {{ day_api}} {{numbers_api}} {{ message}}  <a onClick="window.location.reload()"><button type="button">spin again</button></a>
+
+{% endblock %}
