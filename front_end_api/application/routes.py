@@ -13,4 +13,4 @@ def home():
     message = requests.post('http://rollover_api:5000/get_message', json = result)
     
     # return jsonify(numbers_api = numbers_api.text, message = message.text, day_api = day_api.text)
-    return render_template('index.html', numbers_api = numbers_api.text, message = message.text, day_api = day_api.text)
+    return render_template('index.html', numbers_api = numbers_api.text.strip("[]"), message = message.text, day_api = day_api.text)
