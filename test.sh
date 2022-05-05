@@ -9,7 +9,7 @@ do
   sudo apt-get install python3-venv
   python3 -m venv venv
   source venv/bin/activate
-  pip3 install -r testing.txt
+  pip install -r testing.txt
   python3 -m pytest --cov=application --cov-report=xml --junitxml=junit/test-results.xml
   deactivate
   cd ..
