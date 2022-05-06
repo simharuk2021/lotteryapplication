@@ -16,6 +16,7 @@ services:
 
   front-end: 
     container_name: front_end_api
+    image: docker.io/simharuk/front-end-api:latest
     build: ./front_end_api
     depends_on: 
     - numbers_api
@@ -24,14 +25,17 @@ services:
 
   numbers_api: 
     container_name: numbers_api
+    image: docker.io/simharuk/numbers-api:latest
     build: ./numbers_api
 
   day_api:
     container_name: day_api 
+    image: docker.io/simharuk/day-api:latest
     build: ./day_api 
   
   rollover_api:
     container_name: rollover_api
+    image: docker.io/simharuk/rollover-api:latest
     build: ./rollover_api
     depends_on:
     - numbers_api
