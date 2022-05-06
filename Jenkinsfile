@@ -6,16 +6,21 @@ pipeline {
                 sh "bash test.sh"
             }
         }
-        // stage('Build and push images') {
-        //     environment {
-        //         DOCKER_USERNAME = credentials('docker_username')
-        //         DOCKER_PASSWORD = credentials('docker_password')
-        //     }
-        //     steps {
-        //         sh "docker-compose build --parallel"
-        //         sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
-        //         sh "docker-compose push"
-        //     }
-        // }
+        stage('Build and push images') {
+            environment {
+                DOCKERHUB_CREDENTIALS = credentials('docker_id')
+                // DOCKER_PASSWORD = credentials('docker_password')
+            }
+            steps {
+                sh "docker-compose build --parallel"
+                sh "docker login -u $DOCKER_CREDENTIALS_USR --password-stdin"
+                sh "docker-compose push"
+            }
+        }
+    }
+    post {
+        always {
+            sh "docker logout"
+        }
     }
 }
