@@ -5,3 +5,4 @@ pytest-cov
 markupsafe
 itsdangerous
 Jinja2
+requests_mock
