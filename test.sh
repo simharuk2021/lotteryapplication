@@ -6,6 +6,6 @@ for dir in "${directories[@]}"
 do
   cd ${dir}
   pip3 install -r testing.txt
-  python3 -m pytest --cov=application --cov-report=xml --junitxml=junit/test-results.xml
+  python3 -m pytest --cov=application
   cd ..
 done
