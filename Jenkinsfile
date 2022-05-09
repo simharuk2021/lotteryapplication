@@ -17,10 +17,15 @@ pipeline {
                 sh "docker-compose push"
             }
         }
-    }
+        stage('ansible configuration') {
+            steps {
+                sh "bash ansible.sh"
+            }
+        }
     post {
         always {
             sh "docker logout"
+            }
         }
     }
 }
