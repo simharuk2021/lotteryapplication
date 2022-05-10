@@ -6,7 +6,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="/images/4375050_logo_python_icon.svg" alt="python" width="100" height="100"><img src="images/4691324_flask_icon.png" alt="flask" width="100" height="100"><img src="/images/317755_badge_html_html5_achievement_award_icon.png" alt="html" width="100" height="100"><img src="/images/jinja.PNG" alt="jinja" width="100" height="100"><img src="#" alt="docker" width="100" height="100">
+    <img src="/images/python.svg" alt="python" width="100" height="100"><img src="images/4691324_flask_icon.png" alt="flask" width="100" height="100"><img src="/images/317755_badge_html_html5_achievement_award_icon.png" alt="html" width="100" height="100"><img src="/images/jinja.PNG" alt="jinja" width="100" height="100"><img src="#" alt="docker" width="100" height="100">
 </div>
 
 
