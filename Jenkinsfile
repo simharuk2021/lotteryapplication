@@ -22,10 +22,10 @@ pipeline {
                 sh "bash ansible.sh"
             }
         }
+    }
     post {
         always {
             sh "docker logout"
             }
         }
-    }
 }
