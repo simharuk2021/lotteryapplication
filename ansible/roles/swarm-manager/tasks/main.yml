@@ -1,14 +1,16 @@
 ---
 # tasks file for swarm-manager
-- name: Installing NGINX
-  apt:
-    name: nginx
+- name: "Init swarm"
+  docker_swarm:
     state: present
-  notify: Restart nginx
 
-- name: Copy nginx file
-  copy:
-    src: nginx.conf
-    dest: /etc/nginx/nginx.conf
-  register: nginx_config
-  notify: Restart nginx
+- name: "get swarm info"
+  docker_swarm_info:
+  register: info
+
+- name: "Deploy app"
+  docker_stack:
+    state: present
+    name: event_generator
+    compose:
+      - /home/jenkins/docker-compose.yaml
