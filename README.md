@@ -44,11 +44,11 @@ Essentially the application is designed to demonstrate the implementation of lea
 <p align="right">(<a href="#top">back to top</a>)</p>
 <a name="planning"/>
 
-The planning stage involved the use of Trello as a project management tool where a workboard was created to hold the User Stories and to record the progress of the various build stages of the application
+The planning stage involved the use of Trello as a project management tool where a workboard was created to keep a record of the services, testing, building and configuration aspects of the full application.
 <p></p>
 <br />
 <div align="center">
-    <img src="#" alt="Logo" width="1000" height="400">
+    <img src="images/trello.png" alt="Logo" width="1000" height="400">
 </div>
 
 ## Risk Assessment
@@ -73,18 +73,19 @@ A risk assessment was generated to ensure the build process went as smoothly as 
 ## Technical Build Requirements
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-* [python 3 ](https://www.python.org/about/) 
+* [python 3](https://www.python.org/about/) 
 * [Flask](https://flask.palletsprojects.com/en/2.1.x/?msclkid=9eb344a1b67511ec879f0992ab58cf87#user-s-guide)
 * [Jinga](https://palletsprojects.com/p/jinja/)
-* [mySQL](https://dev.mysql.com/doc/)
+* [Docker](https://hub.docker.com/)
+* [Ansible](https://docs.ansible.com/ansible/latest/index.html?msclkid=8938cb5ad06611ec92ebb76b815507e9)
 * [Google Cloud Platform](https://cloud.google.com/docs)
 
 The app uses python3 which is a high level scripting programming language which integrates Flask as a lightweight micro-framework for developing web applications.  The HTML pages were created using Jinga which is a fast extensible templating engine.
 
-In terms of infrastructure the database server was hosted by Google Cloud platform and used a Virtual Machine to connect mySQL to VScode where a cloned down Github hosted repository holds the source code.
+In terms of infrastructure the code base is on a Google Cloud Virtual Machine which is connected to a Github repository.  The services are all containerised using docker, with the corresponding images pushed to Docker hub.  The testing is automated through Jenkins, with the build orchestration configured through Ansible and the continuous deployment provided by multiple replica's created across Docker Swarm.
 
 <div align="center">
-    <img src="images/architecture.png" alt="Logo" width="800" height="600">
+    <img src="#" alt="Logo" width="800" height="600">
 </div>
 
 ## Testing
@@ -102,15 +103,11 @@ Two types of tests were implemented
 ## Pytest
 
 ## Test Base
-Pytest essentially allowed a test application to be created which ran through all of the build steps including creating the database, tables and then adding in test data. 
-
-## Test Views
-
-These tests passed if executing the route functions resulted in success response codes and the asserted data from the rendered html template ( i.e. the home route had a 200 response code and the word "Music" was rendered in the home template.
+Pytest essentially allowed a for each of the four services to be tested. 
 
 ## Test Data
 
-These tests passed if executing adding data from the form to the route resulted in success response codes and the asserted data from the rendered html template 
+These tests passed if executing adding mock data to the routes and asserting the correct outcomes and response codes based on the data sent. 
 
 The tests, when run would result in output to the terminal as below
 
@@ -134,7 +131,15 @@ The full tests can be found by clicking <a href ="#" target="blank">here </a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 <a name="automation"/>
-In building this project a list of commands had to be executed in order to install the various modules and dependencies of the project.  A virtual environment had to be created and then the database connection string had to be exported before the app could be run.  Further commands were required to run the tests and also to generate the reports.  In terms of automation all of these commands could be run using <a href = "https://www.jenkins.io/">Jenkins</a>.
+In building this project a list of commands had to be executed in order to install the various modules and dependencies of the project.  This was achieved through creating a Jenkinsfile which would execute a series of bash scripts.  The scripts would hold the terminal commands need to access the testing packages for each service, to build the docker images, to log in to docker and to push the images to docker hub.  The final stage was to run an ansible script which points to the playbook and the inventory files.  These files would assign the roles and tasks for orchestrating the continuous deployment through Docker Swarm.  Once the swarm is active replicas of the application would be copied accross the swarm nodes, ensuring any updates to the code would be rolling and result in the application's uptime being maximised.
+The pipeline was defined through four distinct stages:
+
+1) Testing
+2) Build and push Docker images
+3) Configure Ansible
+4) Deployment
+
+<a href = "https://www.jenkins.io/">Jenkins</a>.
 
 <div align="center">
     <img src="#" alt="jenkins logs" width="1000" height="350">
@@ -147,7 +152,7 @@ Within Jenkins a link to the github repository (hosting the source code) was mad
 </div>
 <p></p>
 <div align="center">
-    <img src="images/jenkins_green.PNG" alt="jenkins_tick" width="1000" height="400">
+    <img src="" alt="jenkins_tick" width="1000" height="400">
 </div>
 
 
@@ -155,6 +160,9 @@ Within Jenkins a link to the github repository (hosting the source code) was mad
 
 ## Issues
 
+18.40 dockerlogin
+issue with giving the jenkins user docker permsissions
+ssh issues
 
 <a name="future"/>
 
