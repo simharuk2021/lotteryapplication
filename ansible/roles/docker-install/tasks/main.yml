@@ -3,6 +3,7 @@
 
 - name: "Install docker dependencies"
   apt:
+    update_cache: yes
     pkg:
     - apt-transport-https
     - ca-certificates
