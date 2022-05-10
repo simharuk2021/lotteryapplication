@@ -6,39 +6,39 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-    <img src="/images/python.svg" alt="python" width="100" height="100"><img src="images/4691324_flask_icon.png" alt="flask" width="100" height="100"><img src="/images/317755_badge_html_html5_achievement_award_icon.png" alt="html" width="100" height="100"><img src="/images/jinja.PNG" alt="jinja" width="100" height="100"><img src="#" alt="docker" width="100" height="100">
+    <img src="/images/python.svg" alt="python" width="100" height="100"><img src="images/4691324_flask_icon.png" alt="flask" width="100" height="100"><img src="/images/317755_badge_html_html5_achievement_award_icon.png" alt="html" width="100" height="100"><img src="/images/jinja.png" alt="jinja" width="100" height="100"><img src="images/2993785_docker_social media_icon.png" alt="docker" width="100" height="100">
 </div>
 
 
 1. [ Project Brief. ](#brief)
 2. [ Planning. ](#planning)
 3. [Risk Assessment](#risk)
-4. [Creating the Database](#createdb)
-5. [Walkthrough](#video)
-6. [CRUD](#crud)
-7. [Technical Build Requirement](#build)
-8. [Testing](#test)
-9. [Automation](#automation)
-10. [Issues](#issues)
-11. [Future Consideration](#future)
+4. [Presentation](#video)
+5. [Technical Build Requirement](#build)
+6. [Testing](#test)
+7. [Automation](#automation)
+8. [Issues](#issues)
+9. [Future Consideration](#future)
 
 <p align="right">(<a href="#top">back to top</a>)</p>  
 
 <!-- ABOUT THE PROJECT -->
 ## Project Brief
 <a name="brief"/>
-The project is a CRUD application built with the technologies outlined below.  The workspace was created by using tables created in MySQL connected to database server and a Virtual Machine created in Google Cloud.  The specifics of the app are to give users the ability to create a list of their favourite musicians/artists, add tracks to the artists and then generate a list of musicians and their music.  The update and delete functionality allows users to delete tracks from the list and to change the name of the artist.
+The project is a containerised lottery generation application which uses 4 services.  Service one creates 6 random nnumbers between 1 and 50, Service two generates a random choice of either Wednesday or Saturday, Service three combines both services 1 and 2 and renders an HTML template.  Service four generates whether the draw is a rollover based on two conditionals (a rollover occurs when the sum of all 6 numbers is less than 150 and the day is Saturday).  The code base is held on one Virtual Machine, created in Google Cloud Platform and is containerised/built locally using Docker.   
 
 Essentially the application is designed to demonstrate the implementation of learning gained and meets the following requirements
 
 | Requirement | Detail |
 | --- | --- |
 | Trello board  | Kanban board with full expansion on user stories, use cases, tasks and issues within the project.|
-| Relational Database | persistent storage with at least 2 tables in it |
-| Clear Documentation | Design phases, architecture and risk assessment |
-| CRUD application | Create an app which Reads, Creates, Updates and Deletes Using Python best practices |
-| Fully designed test suites | create and run automated tests to provide a high level of coverage |
-| Functioning front-end | Create an integrated API and front end using Flask |
+| Feature Branching | Use of version control system built through a cloud based CI server |
+| Webhooks | Implemntation of webhooks to trigger a Jenkins reployment when the code base is changed |
+| Service Architecture | Four services must be created which send post and get requests to each other |
+| Containerisation | Each Service is containerised and the built images are pushed to Docker hub |
+| Orchestration | The containers must be replicated accross two VM's which are part of a Docker Swarm |
+| Configuration | The project must be configured and an environment provisioned using an Ansible playbook |
+| Reverse Proxy | The project must be accessible to the user via a reverse proxy server (Nginx) |
 
 ## Planning 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -58,34 +58,15 @@ The planning stage involved the use of Trello as a project management tool where
 A risk assessment was generated to ensure the build process went as smoothly as possible and introduced control measures for the potentialy adverse effects of the variables identified.
 
 <div align="center">
-    <img src="#" alt="Logo" width="1000" height="400">
+    <img src="images/risk.png" alt="Logo" width="1000" height="400">
 </div>
 
-## Creating the Database
-<p align="right">(<a href="#top">back to top</a>)</p>
-<a name="createdb"/>
-
-
-<br />
-<div align="center">
-    <img src="#" alt="ERD" width="800" height="600">
-</div>
 
 <a name="video"/>
 
-## Video walkthrough of the fuctioning app
+## Presentation
 
    <span align="center"> [![Music application](.jpg)](#link) </span>
-
-## CRUD
-<p align="right">(<a href="#top">back to top</a>)</p>
-<a name="crud"/>
-This functionality represents the CREATE, READ, UPDATE and DELETE aspects of data retrieval and manipulation.  For the project CRUD is implemented as follows:
-
-* CREATE - Create Artists and Tracks
-* READ   - View a list of the artists and tracks on one page
-* UPDATE - To update the Artist name
-* DELETE - To delete a track from the database
 
 <a name="build"/>
 
