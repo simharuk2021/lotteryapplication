@@ -107,13 +107,8 @@ Pytest essentially allowed a for each of the four services to be tested.
 
 ## Test Data
 
-These tests passed if executing adding mock data to the routes and asserting the correct outcomes and response codes based on the data sent. 
+These tests passed if executing adding mock data to the routes and asserting the correct outcomes and response codes based on the data sent. These were automated as part of the jenkins pipeline.
 
-The tests, when run would result in output to the terminal as below
-
-<div align="center">
-    <img src="#" alt="pytest" width="1000" height="500">
-</div>
 
 ## Pytest Cov
 
@@ -121,7 +116,7 @@ When considering the combined scope of all of the individual tests the coverage 
 When run the following output would be displayed in the terminal.
 
 <div align="center">
-    <img src="#" alt="pytestcov" width="1000" height="350">
+    <img src="images/pytest_cov.PNG" alt="pytestcov" width="1000" height="350">
 </div>
 
 The full tests can be found by clicking <a href ="#" target="blank">here </a>
@@ -141,8 +136,6 @@ The pipeline was defined through four distinct stages:
 2) Build and push Docker images
 3) Configure Ansible
 4) Deployment
-
-<a href = "https://www.jenkins.io/">Jenkins</a>.
 
 <div align="center">
     <img src="images/pipeline_stages.PNG" alt="jenkins logs" width="1000" height="350">
