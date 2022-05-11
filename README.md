@@ -85,7 +85,7 @@ The app uses python3 which is a high level scripting programming language which 
 In terms of infrastructure the code base is on a Google Cloud Virtual Machine which is connected to a Github repository.  The services are all containerised using docker, with the corresponding images pushed to Docker hub.  The testing is automated through Jenkins, with the build orchestration configured through Ansible and the continuous deployment provided by multiple replica's created across Docker Swarm.
 
 <div align="center">
-    <img src="#" alt="Logo" width="800" height="600">
+    <img src="images/architecture.PNG" alt="Logo" width="800" height="600">
 </div>
 
 ## Testing
@@ -132,6 +132,9 @@ The full tests can be found by clicking <a href ="#" target="blank">here </a>
 <p align="right">(<a href="#top">back to top</a>)</p>
 <a name="automation"/>
 In building this project a list of commands had to be executed in order to install the various modules and dependencies of the project.  This was achieved through creating a Jenkinsfile which would execute a series of bash scripts.  The scripts would hold the terminal commands need to access the testing packages for each service, to build the docker images, to log in to docker and to push the images to docker hub.  The final stage was to run an ansible script which points to the playbook and the inventory files.  These files would assign the roles and tasks for orchestrating the continuous deployment through Docker Swarm.  Once the swarm is active replicas of the application would be copied accross the swarm nodes, ensuring any updates to the code would be rolling and result in the application's uptime being maximised.
+
+A further aspect to the deployment was added through a webhook.  Essentially this linked the pipeline to the related github branch with the effect of running a new pipeline as soon as changes to the code base were pushed.
+
 The pipeline was defined through four distinct stages:
 
 1) Testing
@@ -148,7 +151,7 @@ The pipeline was defined through four distinct stages:
 Within Jenkins a link to the github repository (hosting the source code) was made and a script with build and test stages was run.  The successfull build resulted in an hosted application which produced the following console output within Jenkins.
 
 <div align="center">
-    <img src="images/build_test_pipeline.PNG" alt="jenkins_console" width="1000" height="350">
+    <img src="images/console.PNG" alt="jenkins_console" width="1000" height="350">
 </div>
 <p></p>
 <div align="center">
