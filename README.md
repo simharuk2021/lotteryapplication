@@ -66,7 +66,7 @@ A risk assessment was generated to ensure the build process went as smoothly as 
 
 ## Presentation
 
-   <span align="center"> [![Music application](.jpg)](#link) </span>
+   <span align="center"> [![Lottery application](images/lotteryapp.PNG)](https://youtu.be/GZk8QSBjJVs) </span>
 
 <a name="build"/>
 
