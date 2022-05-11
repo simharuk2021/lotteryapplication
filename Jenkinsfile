@@ -22,6 +22,11 @@ pipeline {
                 sh "bash ansible.sh"
             }
         }
+        stage('Deployment'){
+            steps{
+                sh "bash deploy.sh"
+            }
+        }
     }
     post {
         always {
