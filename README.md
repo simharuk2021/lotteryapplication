@@ -142,13 +142,13 @@ The pipeline was defined through four distinct stages:
 <a href = "https://www.jenkins.io/">Jenkins</a>.
 
 <div align="center">
-    <img src="#" alt="jenkins logs" width="1000" height="350">
+    <img src="images/pipeline_stages.PNG" alt="jenkins logs" width="1000" height="350">
 </div>
 
 Within Jenkins a link to the github repository (hosting the source code) was made and a script with build and test stages was run.  The successfull build resulted in an hosted application which produced the following console output within Jenkins.
 
 <div align="center">
-    <img src="#" alt="jenkins_console" width="1000" height="350">
+    <img src="images/build_test_pipeline.PNG" alt="jenkins_console" width="1000" height="350">
 </div>
 <p></p>
 <div align="center">
@@ -160,16 +160,17 @@ Within Jenkins a link to the github repository (hosting the source code) was mad
 
 ## Issues
 
-18.40 dockerlogin
-issue with giving the jenkins user docker permsissions
-ssh issues
+Issues originally ocurred with using Ubuntu 18.04 as docker was unable to login due to a compatability issue.  This was resolved by using and installing the gnupg2 package.
+Further issues were identified by needing to giving the jenkins user docker permsissions and to generate the ssh key for the swarm by logging in as the jenkins user.
 
 <a name="future"/>
 
 ## Future Considerations
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-         
+
+The app UI and styling has some scope for improvement.
+
 ## Acknowledgements
 * Victoria Sacre (QA Tutor)
 * general support from the friendly 22MarEnable1 cohort.
