@@ -27,16 +27,22 @@ services:
     container_name: numbers_api
     image: docker.io/simharuk/numbers-api:latest
     build: ./numbers_api
+    deploy:
+      replicas: 3
 
   day_api:
     container_name: day_api 
     image: docker.io/simharuk/day-api:latest
     build: ./day_api 
+    deploy: 
+      replicas: 3
   
   rollover_api:
     container_name: rollover_api
     image: docker.io/simharuk/rollover-api:latest
     build: ./rollover_api
+    deploy:
+      replicas: 3
     depends_on:
     - numbers_api
     - day_api
