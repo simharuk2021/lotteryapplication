@@ -2,6 +2,6 @@
 
 rsync docker-compose.yaml nginx.conf swarm-manager:
 
-su -l jenkins
+exec sudo su -l jenkins
 
 ssh swarm-manager
