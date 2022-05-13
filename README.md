@@ -65,6 +65,8 @@ A risk assessment was generated to ensure the build process went as smoothly as 
 <a name="video"/>
 
 ## Presentation
+<p></p>
+Click on the picture below to launch the presentation/walkthrough of the application.
 
    <span align="center"> [![Lottery application](images/lotteryapp.PNG)](https://youtu.be/GZk8QSBjJVs) </span>
 
@@ -82,7 +84,7 @@ A risk assessment was generated to ensure the build process went as smoothly as 
 
 The app uses python3 which is a high level scripting programming language which integrates Flask as a lightweight micro-framework for developing web applications.  The HTML pages were created using Jinga which is a fast extensible templating engine.
 
-In terms of infrastructure the code base is on a Google Cloud Virtual Machine which is connected to a Github repository.  The services are all containerised using docker, with the corresponding images pushed to Docker hub.  The testing is automated through Jenkins, with the build orchestration configured through Ansible and the continuous deployment provided by multiple replica's created across Docker Swarm.
+In terms of infrastructure the code base is on a Google Cloud Virtual Machine which is connected to a Github repository.  The services are all containerised using docker, with the corresponding images pushed to Docker hub.  The testing is automated through Jenkins, with the build orchestration configured through Ansible and the continuous deployment provided by multiple replica's created across a Docker Swarm.  In total the application set up utilises four Virtual Machines but only three of those are used in the deployment scenario.
 
 <div align="center">
     <img src="images/architecture.PNG" alt="Logo" width="800" height="600">
@@ -119,16 +121,16 @@ When run the following output would be displayed in the terminal.
     <img src="images/pytest_cov.PNG" alt="pytestcov" width="1000" height="350">
 </div>
 
-The full tests can be found by clicking <a href ="#" target="blank">here </a>
+The full tests can be seen within the running pipeline shown <a href ="https://youtu.be/GZk8QSBjJVs" target="blank">here </a>
 
 
 ## Build Automation
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 <a name="automation"/>
-In building this project a list of commands had to be executed in order to install the various modules and dependencies of the project.  This was achieved through creating a Jenkinsfile which would execute a series of bash scripts.  The scripts would hold the terminal commands need to access the testing packages for each service, to build the docker images, to log in to docker and to push the images to docker hub.  The final stage was to run an ansible script which points to the playbook and the inventory files.  These files would assign the roles and tasks for orchestrating the continuous deployment through Docker Swarm.  Once the swarm is active replicas of the application would be copied accross the swarm nodes, ensuring any updates to the code would be rolling and result in the application's uptime being maximised.
+In building this project a list of commands had to be executed in order to install the various modules and dependencies of the project.  This was achieved through creating a Jenkinsfile which would execute a series of bash scripts.  The scripts would hold the terminal commands need to access the testing packages for each service, to build the docker images, to log in to docker and to push the images to docker hub.  The final stage was to run an ansible script which points to the playbook and the inventory files.  These files would assign the roles and tasks for orchestrating the continuous deployment through Docker Swarm.  Once the swarm was active replicas of the application would be copied accross the swarm nodes, ensuring any updates to the code would be rolling and result in the application's uptime being maximised.
 
-A further aspect to the deployment was added through a webhook.  Essentially this linked the pipeline to the related github branch with the effect of running a new pipeline as soon as changes to the code base were pushed.
+A further aspect to the deployment was added through a webhook.  Essentially this linked the pipeline to the related github branch, with the effect of running a new pipeline as soon as changes to the code base were pushed.
 
 The pipeline was defined through four distinct stages:
 
@@ -141,23 +143,19 @@ The pipeline was defined through four distinct stages:
     <img src="images/pipeline_stages.PNG" alt="jenkins logs" width="1000" height="350">
 </div>
 
-Within Jenkins a link to the github repository (hosting the source code) was made and a script with build and test stages was run.  The successfull build resulted in an hosted application which produced the following console output within Jenkins.
+Within Jenkins a link to the github repository (hosting the source code) was made and a script with build, test and deploy stages was run.  The successfull build resulted in an hosted application which produced the following console output within Jenkins.
 
 <div align="center">
     <img src="images/console.PNG" alt="jenkins_console" width="1000" height="350">
 </div>
 <p></p>
-<div align="center">
-    <img src="" alt="jenkins_tick" width="1000" height="400">
-</div>
-
 
 <a name="issues"/>
 
 ## Issues
 
 Issues originally ocurred with using Ubuntu 18.04 as docker was unable to login due to a compatability issue.  This was resolved by using and installing the gnupg2 package.
-Further issues were identified by needing to giving the jenkins user docker permsissions and to generate the ssh key for the swarm by logging in as the jenkins user.
+Further issues were identified by needing to giving the jenkins user permsissions and to generate the ssh key for the swarm by logging in as the jenkins user.
 
 <a name="future"/>
 
